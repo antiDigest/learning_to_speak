@@ -1,0 +1,41 @@
+Cornell Collection of Advertising Slogans v1.00 (released January 2013)
+
+Distributed together with:
+
+"You had me at Hello: How phrasing affects memorability"
+Cristian Danescu-Niculescu-Mizil, Justin Cheng, Jon Kleinberg and Lillian Lee
+ACL 2012
+
+RELATED CORPUS: Cornell Movie-Quotes Corpus, available at http://www.cs.cornell.edu/~cristian/memorability.html
+
+NOTE: If you have results using this collection, please send email to cristian@cs.cornell.edu so we can add you to our list of people using this data.  Thanks!
+
+ 
+Contents of this README:
+
+	A) Brief description
+	B) Source
+	C) Contact
+
+
+A) Brief description:
+
+This collection contains 501 advertisement slogans used in the "You had me at hello" paper referenced above.
+
+
+B) The slogans were collected from various online sources, including:
+
+http://www.adslogans.co.uk/hof/
+http://www.ad-mad.com/slogans
+http://www.thinkslogans.com/slogans/advertising-slogans/
+http://www.scribd.com/doc/48574717/advertisement-slogans
+
+The resulting collection was manually curated.
+
+
+C) Contact:
+
+Please email any questions to: cristian@cs.cornell.edu (Cristian Danescu-Niculescu-Mizil)
+
+
+This material is based upon work supported in part by the National Science Foundation under grant IIS-0910664.  Any opinions, findings, and conclusions or recommendations expressed above are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
