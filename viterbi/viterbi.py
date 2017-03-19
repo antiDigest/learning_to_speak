@@ -61,6 +61,8 @@ class Viterbi(object):
             The State sequence generator, takes as input the probability of next state given the first
             and the probability of having one state given an observation and maximises the sequence that
             can be made.
+
+            This function generates the viterbi sequence for a set of observations.
         """
 
         states = self.p_table.keys()
