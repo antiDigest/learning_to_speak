@@ -10,6 +10,9 @@ class CKY():
 
     def display(self):
         print 'Table'
+        for i, l in enumerate(self.cky_table):
+            sys.stdout.write('|' + str(i))
+        print
         for l in self.cky_table:
             sys.stdout.write('|:-:')
         print
