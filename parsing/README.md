@@ -5,7 +5,8 @@ For: The large can can hold the water
 
 Given CFG:
 
-`
+```
+
 S -> NP VP
 
 NP -> ART ADJ N
@@ -33,7 +34,8 @@ V -> hold
 N -> water
 
 V -> water
-`
+
+```
 
 (This was converted to CNF CFG before entering)
 
