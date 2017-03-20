@@ -38,6 +38,7 @@ class CFG(object):
             if tag in rule[1]:
                 applicable.append(rule[0])
 
+        # print 'Checking rule', tag, 'to return', applicable
         return applicable
 
 if __name__ == '__main__':

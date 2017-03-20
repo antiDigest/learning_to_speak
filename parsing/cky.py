@@ -10,9 +10,15 @@ class CKY():
 
     def display(self):
         print 'Table'
+        for l in self.cky_table:
+            sys.stdout.write('|:-:')
+        print
         for line in self.cky_table:
             for cell in line:
-                sys.stdout.write(str(cell) + ' ')
+                if not cell == []:
+                    sys.stdout.write(str(cell) + '|')
+                else:
+                    sys.stdout.write('|')
             print
 
     def cky_parse(self, words, grammar):
@@ -44,4 +50,4 @@ if __name__ == '__main__':
     cfg = CFG('main.cfg')
     cky = CKY()
 
-    cky.cky_parse(['I', 'am'], cfg)
+    cky.cky_parse(['the', 'large', 'can', 'can', 'hold', 'the', 'water'], cfg)
