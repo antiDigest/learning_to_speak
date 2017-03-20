@@ -4,11 +4,22 @@ Table
 For: The large can can hold the water
 
 Given CFG:
-S → NP VP         the: ART
-NP → ART ADJ N    large:ADJ
-NP → ART N        can:N, AUX, V
-VP → AUX VP       hold: N,V
-VP → V NP         water:N, V
+S -> NP VP
+NP -> ART ADJ N
+NP -> ART N
+VP -> AUX VP
+VP -> V NP
+ART -> the
+ADJ -> large
+N -> can
+AUX -> can
+V -> can
+N -> hold
+V -> hold
+N -> water
+V -> water
+
+(This was converted to CNF CFG before entering)
 
 X|X|X|X|X|X|X|X
 :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
