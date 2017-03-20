@@ -4,6 +4,7 @@ Table
 For: The large can can hold the water
 
 Given CFG:
+`
 S -> NP VP
 NP -> ART ADJ N
 NP -> ART N
@@ -18,6 +19,7 @@ N -> hold
 V -> hold
 N -> water
 V -> water
+`
 
 (This was converted to CNF CFG before entering)
 
