@@ -6,4 +6,4 @@ This repository is an attempt to implement all algorithms in the Speech and Lang
 
 I'll be arranging the algorithms already implemented according to the flow given in the book.
 
-Everyone is motivated to contribute.
+# Everyone is motivated to contribute.
