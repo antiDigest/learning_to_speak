@@ -4,6 +4,18 @@ This repository is an attempt to implement all algorithms in the Speech and Lang
 
 # TODO
 
-I'll be arranging the algorithms already implemented according to the flow given in the book.
+*	~~Simplified Lesk Algorithm~~
 
-# Everyone is motivated to contribute.
+*	Automata - NDRecognise
+
+*	Automata - DRecognise
+
+*	Conversational Bot
+
+*	Semantic Similarity - Quora Question Pairs
+
+*	~~Context Free Grammar Parser~~
+
+*	Probability Context Free Grammar Parser
+
+# Everyone is encouraged to contribute.
