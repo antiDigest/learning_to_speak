@@ -7,8 +7,7 @@ This repository is an attempt to implement all algorithms in the Speech and Lang
 The
 
 ```
-	installations.txt
-
+installations.txt
 ```
 
 files contains all the libraries needed for this.
@@ -16,9 +15,8 @@ files contains all the libraries needed for this.
 Other than this, you will need to download WordNet and word_tokenize modules using
 
 ```
-	import nltk
-	nltk.download()
-
+import nltk
+nltk.download()
 ```
 
 in a python shell in your terminal.
@@ -29,22 +27,19 @@ in a python shell in your terminal.
 The simplest method right now to access each algorithm is to go to each of the folders, if there is a
 
 ```
-	run.py
-
+run.py
 ```
 
 file in the folder, you will be able to run it with simply
 
 ```
-	python run.py <arguments>
-
+python run.py <arguments>
 ```
 
 you can access what arguments each of those run files takes using the 
 
 ```
-	python run.py -h
-
+python run.py -h
 ```
 
 option for argparse help.
