@@ -35,20 +35,14 @@ class Lesk(object):
             return word.lower(), senses
 
         gloss = {}
-        nyms = ['hypernyms', 'hyponyms',
-                'member_meronyms', 'part_meronyms', 'substance_meronyms']
-        for i in nyms:
-            gloss[i] = []
 
         for sense in senses:
+            gloss[sense.name()] = []
 
-            for i in nyms:
-                try:
-                    for syn in getattr(sense, i)():
-                        gloss[i].append((syn, str(syn.definition())))
-                except AttributeError as e:
-                    print e
-                    pass
+        for sense in senses:
+            gloss[sense.name()] += word_tokenize(sense.definition())
+
+        # print gloss
 
         return gloss
 
@@ -71,8 +65,8 @@ class Lesk(object):
         # Step
         for i in range(len(set1)):
             for j in range(len(set2)):
-                for word in set1[i][1]:
-                    if word in set2[j][1]:
+                for word in set1[i]:
+                    if word in set2[j]:
                         overlap += 1
 
         return overlap
@@ -85,25 +79,47 @@ class Lesk(object):
         gloss_set2 = self.getAll(word2)
 
         score = {}
-        for i in nyms:
-            score[i] = {}
-            for j in nyms:
+        for i in gloss_set1.keys():
+            score[i] = 0
+            for j in gloss_set2.keys():
                 score[i] += self.Score(gloss_set1[i], gloss_set2[j])
 
-        print score
+        # print score
+        max_score = 0
+        for i in gloss_set1.keys():
+            if score[i] > max_score:
+                max_score = score[i]
+                bestSense = i
 
-    def adaptedLesk(self, sentence, word, k):
+        return bestSense, wn.synset(bestSense).definition()
+
+    def adaptedLesk(self, sentence):
         maxOverlap = 0
         context = word_tokenize(sentence.lower())
 
-        index = context.index(word.lower())
-        context = context[index - k:index + k]
+        # index = context.index(word.lower())
+        # if index - k > 0 and index + k < len(context):
+        #     context = context[index - k: index + k]
+        # elif index + k < len(context):
+        #     context = context[0: index + k]
+        # elif index - k > 0:
+        #     context = context[index - k: len(context)]
+        # else:
+        #     context = context[0: len(context)]
 
-        if senses == []:
-            return None
+        print context
+        new_sent = []
+        for i, word in enumerate(context):
+            if i >= 0 and i < len(context) - 1:
+                new_sent.append(
+                    (word, self.overlapScore(word, context[i + 1])))
+            elif i == len(context) - 1:
+                new_sent.append(
+                    (word, self.overlapScore(word, context[i - 1])))
 
-        print self.overlapScore('pine', 'cone')
-        # for sense in senses:
+                # for sense in senses:
+
+        return new_sent
 
     def simplifiedLesk(self, sentence, word):
 
@@ -132,4 +148,4 @@ class Lesk(object):
 if __name__ == '__main__':
     sense = Lesk()
 
-    print sense.overlapScore('pine', 'cone')
+    print sense.adaptedLesk('pine cone')
