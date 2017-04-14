@@ -46,10 +46,10 @@ def semanticSimilarity(q1, q2):
     # stem_q1, stem_q2 = stemmer(tokens_q1, tokens_q2)
     tag_q1, tag_q2 = posTag(tokens_q1, tokens_q2)
 
-    for t in tag_q1:
-        # print t
-        if 'NN' in t[1] or 'VB' in t[1]:
-            print t
+    for i, word1 in enumerate(tag_q1):
+        for j, word2 in enumerate(tag_q2):
+            if word1[1] == word2[1] and ('NN' in word1 or 'VB' in word1):
+                print word1, word2
 
 if __name__ == '__main__':
     train = pd.read_csv('data/train.csv')
@@ -65,7 +65,9 @@ if __name__ == '__main__':
     for row in train_qs.itertuples():
         try:
             count += 1
-            semanticSimilarity(row[2], row[3])
+            q1 = row[2].decode('utf8', errors='ignore')
+            q2 = row[3].decode('utf8', errors='ignore')
+            semanticSimilarity(q1, q2)
             # break
         except TypeError:
             pass
