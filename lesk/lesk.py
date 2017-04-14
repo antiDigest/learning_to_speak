@@ -28,6 +28,30 @@ class Lesk(object):
 
         return freqSense, senses
 
+    def getAll(self, word):
+        senses = wn.synsets(word.lower())
+
+        if senses == []:
+            return word.lower(), senses
+
+        gloss = {}
+        nyms = ['hypernyms', 'hyponyms',
+                'member_meronyms', 'part_meronyms', 'substance_meronyms']
+        for i in nyms:
+            gloss[i] = []
+
+        for sense in senses:
+
+            for i in nyms:
+                try:
+                    for syn in getattr(sense, i)():
+                        gloss[i].append((syn, str(syn.definition())))
+                except AttributeError as e:
+                    print e
+                    pass
+
+        return gloss
+
     def computeOverlap(self, signature, context):
 
         # Base
@@ -40,52 +64,72 @@ class Lesk(object):
 
         return overlap
 
-    def adaptedLesk(self, sentence, word=None, context=None)
+    def Score(self, set1, set2):
+        # Base
+        overlap = 0
 
-    def simplifiedLesk(self, sentence, word=None):
+        # Step
+        for i in range(len(set1)):
+            for j in range(len(set2)):
+                for word in set1[i][1]:
+                    if word in set2[j][1]:
+                        overlap += 1
 
-        if not word == None:
-            bestSense, senses = self.getMostFrequent(word)
-            maxOverlap = 0
-            context = word_tokenize(sentence.lower())
+        return overlap
 
-            if senses == []:
-                return 'ERROR: Cannot find a proper sense for the word !'
+    def overlapScore(self, word1, word2):
+        nyms = ['hypernyms', 'hyponyms',
+                'member_meronyms', 'part_meronyms', 'substance_meronyms']
 
-            for sense in senses:
-                examples = [sense.definition()] + sense.examples()
-                signature = []
-                for example in examples:
-                    signature += list(
-                        set(re.split('[^\w]* [^\w]*', example.lower())))
-                signature = list(set(signature))
-                # print signature
-                overlap = self.computeOverlap(signature, context)
-                if overlap > maxOverlap:
-                    maxOverlap = overlap
-                    bestSense = sense
+        gloss_set1 = self.getAll(word1)
+        gloss_set2 = self.getAll(word2)
 
-            return bestSense, bestSense.definition()
+        score = {}
+        for i in nyms:
+            score[i] = {}
+            for j in nyms:
+                score[i] += self.Score(gloss_set1[i], gloss_set2[j])
 
-        else:
-            sentence_senses = []
-            for word in sentence:
-                bestSense, senses = self.getMostFrequent(word)
-                maxOverlap = 0
-                context = sentence
+        print score
 
-                for sense in senses:
-                    examples = [sense.definition()] + sense.examples()
-                    signature = []
-                    for example in examples:
-                        signature += list(
-                            set(re.split('[^\w]* [^\w]*', example.lower())))
-                    signature = list(set(signature))
-                    # print signature
-                    overlap = self.computeOverlap(signature, context)
-                    if overlap > maxOverlap:
-                        maxOverlap = overlap
-                        bestSense = sense
+    def adaptedLesk(self, sentence, word, k):
+        maxOverlap = 0
+        context = word_tokenize(sentence.lower())
 
-                sentence_senses.append((word, bestSense))
-            return sentence_senses
+        index = context.index(word.lower())
+        context = context[index - k:index + k]
+
+        if senses == []:
+            return None
+
+        print self.overlapScore('pine', 'cone')
+        # for sense in senses:
+
+    def simplifiedLesk(self, sentence, word):
+
+        bestSense, senses = self.getMostFrequent(word)
+        maxOverlap = 0
+        context = word_tokenize(sentence.lower())
+
+        if senses == []:
+            return 'ERROR: Cannot find a proper sense for the word !'
+
+        for sense in senses:
+            examples = [sense.definition()] + sense.examples()
+            signature = []
+            for example in examples:
+                signature += list(
+                    set(re.split('[^\w]* [^\w]*', example.lower())))
+            signature = list(set(signature))
+            # print signature
+            overlap = self.computeOverlap(signature, context)
+            if overlap > maxOverlap:
+                maxOverlap = overlap
+                bestSense = sense
+
+        return bestSense, bestSense.definition()
+
+if __name__ == '__main__':
+    sense = Lesk()
+
+    print sense.overlapScore('pine', 'cone')
