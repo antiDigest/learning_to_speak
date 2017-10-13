@@ -1,8 +1,8 @@
-# learning_to_speak
+# Natural Language Processing
 
 This repository is an attempt to implement all algorithms in the Speech and Language Processing, Second Edition book.
 
-# Dependencies
+### Dependencies
 
 The
 
@@ -22,7 +22,7 @@ nltk.download()
 in a python shell in your terminal.
 
 
-# How to Run ?
+### How to Run ?
 
 The simplest method right now to access each algorithm is to go to each of the folders, if there is a
 
@@ -45,7 +45,7 @@ python run.py -h
 option for argparse help.
 
 
-# TODO
+## TODO
 
 *	~~Simplified Lesk Algorithm~~
 
@@ -55,12 +55,12 @@ option for argparse help.
 
 *	Conversational Bot
 
-*	Semantic Similarity - Quora Question Pairs
+*	~~Semantic Similarity - Quora Question Pairs~~
 
 *	~~Adapted Lesk Algorithm - Quora Question Pairs~~
 
 *	~~Context Free Grammar Parser~~
 
-*	Probability Context Free Grammar Parser
+*	~~Probability Context Free Grammar Parser~~
 
 # Everyone is encouraged to contribute.
