@@ -45,22 +45,37 @@ python run.py -h
 option for argparse help.
 
 
-## TODO
+## Done:
 
-*	~~Simplified Lesk Algorithm~~
+#### Simplified Lesk Algorithm
+
+This algorithm finds the sense of the word by matching context with wordnet definitions and examples to identify a best sense.
+
+#### Quora Question Pairs
+
+Attempted to solve the [Quora Question Pairs](https://www.kaggle.com/c/quora-question-pairs) competition as part of the class project, so implemented three different basic methods to identify.
+
+1. **Adapted Lesk Algorithm**: The Lesk algorithm was a good way to identify which words were being used in what sense and the output of the Lesk algorithm gave a semantic understanding of the sentence. When comparing two sentences, this understanding was used and a similarity score was generated based on the similarity of words in the two sentences.
+
+2. **Cosine Similarity using TFIDF**: TFIDF is one of the basic methods to convert sentences to vectors. This is mostly used for numerical representation of words and so seemed a great method to vectorize and identify the similarity between the two sentences.
+
+3. **LSTM using Doc2Vec**: Best implementation of the three. Actually this did not require a lot of implementation, just assembling of some methods and training the LSTM for hours over Doc2Vec input and class output.
+
+#### Context Free Grammar Parser
+
+CFG Parser loads the grammar and tags the sentences using the CFG. The program runs in O(n^2) and is a dynamic program as explained in the Speech and Language Processing book.
+
+#### Probability Context Free Grammar Parser
+
+This is an extension of the CFG parser where it selects only the most probable tagging of the text.
+
+
+## TODO
 
 *	Automata - NDRecognise
 
 *	Automata - DRecognise
 
-*	Conversational Bot
+*	Conversational Bot (LSTM)
 
-*	~~Semantic Similarity - Quora Question Pairs~~
-
-*	~~Adapted Lesk Algorithm - Quora Question Pairs~~
-
-*	~~Context Free Grammar Parser~~
-
-*	~~Probability Context Free Grammar Parser~~
-
-# Everyone is encouraged to contribute.
+* Brill Tagger
